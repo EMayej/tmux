@@ -82,8 +82,44 @@ set_layout_bindings() {
     tmux bind-key -T LAYOUT '}' resize-pane -D '\;' switch -T LAYOUT
 }
 
+set_theme() {
+    tmux set-option -g status-bg black #base02
+    tmux set-option -g status-fg yellow #yellow
+    tmux set-option -g status-attr default
+    tmux set-option -g status-left '#{s/root//:client_key_table}'
+
+    # default window title colors
+    tmux set-option -w -g window-status-fg brightblue #base0
+    tmux set-option -w -g window-status-bg default
+    tmux set-option -w -g window-status-attr dim
+
+    # active window title colors
+    tmux set-option -w -g window-status-current-fg brightred #orange
+    tmux set-option -w -g window-status-current-bg default
+    tmux set-option -w -g window-status-current-attr bright
+
+    # pane border
+    tmux set-option -g pane-border-fg black #base02
+    tmux set-option -g pane-active-border-fg brightgreen #base01
+
+    # message text
+    tmux set-option -g message-bg black #base02
+    tmux set-option -g message-fg brightred #orange
+
+    # pane number display
+    tmux set-option -g display-panes-active-colour blue #blue
+    tmux set-option -g display-panes-colour brightred #orange
+
+    # clock
+    tmux set-option -w -g clock-mode-colour green #green
+
+    # bell
+    tmux set-option -w -g window-status-bell-style fg=black,bg=red #base02, red
+}
+
 main() {
     set_start_bindings
     set_layout_bindings
+    set_theme
 }
 main
