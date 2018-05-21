@@ -80,6 +80,13 @@ set_layout_bindings() {
     tmux bind-key -T LAYOUT '}' resize-pane -D '\;' switch -T LAYOUT
 }
 
+set_copy_mode_vi() {
+    tmux set-option -w -g mode-keys vi
+    tmux bind-key -T prefix Escape copy-mode
+    tmux bind-key -T copy-mode-vi v send -X begin-selection
+    tmux bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel pbcopy
+}
+
 set_theme() {
     tmux set-option -g status-bg black #base02
     tmux set-option -g status-fg yellow #yellow
@@ -118,6 +125,7 @@ set_theme() {
 main() {
     set_start_bindings
     set_layout_bindings
+    set_copy_mode_vi
     set_theme
 }
 main
