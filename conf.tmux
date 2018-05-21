@@ -27,8 +27,6 @@ set_start_bindings() {
     tmux bind-key '^' split-window -v '\;' choose-window 'kill-pane; join-pane -vs %%'
     tmux bind-key '<' split-window -h '\;' choose-window 'kill-pane; join-pane -hs %%'
     tmux bind-key '>' break-pane -d
-
-    tmux bind-key R source-file ~/.tmux.conf '\;' display-message "Config reloaded..."
 }
 
 set_layout_bindings() {
