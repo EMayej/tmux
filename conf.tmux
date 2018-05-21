@@ -40,6 +40,7 @@ set_layout_bindings() {
     tmux bind-key -T T-Windows h select-pane -L
     tmux bind-key -T T-Windows l select-pane -R
     tmux bind-key -T T-Windows m resize-pane -Z
+    tmux bind-key -T T-Windows w choose-tree -wZ
 
     # select
     tmux bind-key -T T-Window-Manipulate j select-pane -D '\;' switch -T T-Window-Manipulate
