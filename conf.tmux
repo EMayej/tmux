@@ -24,8 +24,8 @@ set_start_bindings() {
     # ^ pulls a window into a horizontal pane
     # < pulls a window into a vertical pane
     # > breaks it back out into its own window
-    tmux bind-key '^' split-window -v '\;' choose-window 'kill-pane; join-pane -vs %%'
-    tmux bind-key '<' split-window -h '\;' choose-window 'kill-pane; join-pane -hs %%'
+    tmux bind-key '^' split-window -v '\;' choose-tree -w 'kill-pane; join-pane -vs %%'
+    tmux bind-key '<' split-window -h '\;' choose-tree -w 'kill-pane; join-pane -hs %%'
     tmux bind-key '>' break-pane -d
 }
 
