@@ -13,6 +13,12 @@ set_start_bindings() {
 
     tmux set-option -g -w xterm-keys on
     tmux set-option -g allow-rename on
+    tmux set-option -g renumber-windows on
+    tmux set-option -g -w automatic-rename on
+    tmux set-option -g set-titles on
+    tmux set-option -g set-titles-string '#h ❐ #S ● #I #W'
+    tmux set-option -g monitor-activity on
+    tmux set-option -g visual-activity off
 
     tmux set-option -g display-panes-time 2000
 
