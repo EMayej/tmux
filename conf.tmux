@@ -3,7 +3,8 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 set_start_bindings() {
-    tmux set-option -g prefix M-m
+    tmux set-option -g prefix "\`"
+    tmux bind-key -T prefix "\`" send-prefix
 
     tmux set-option -g default-shell /usr/local/bin/fish
 
