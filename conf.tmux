@@ -30,6 +30,7 @@ set_copy_mode_vi() {
 
 my_settings() {
     tmux set-option -g allow-rename off
+    tmux set-option -g default-terminal "xterm-256color"
 }
 
 main() {
