@@ -28,6 +28,10 @@ set_copy_mode_vi() {
     tmux bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel pbcopy
 }
 
+my_settings() {
+    tmux set-option -g allow-rename off
+}
+
 main() {
     set_start_bindings
     set_copy_mode_vi
