@@ -36,5 +36,6 @@ my_settings() {
 main() {
     set_start_bindings
     set_copy_mode_vi
+    my_settings
 }
 main
