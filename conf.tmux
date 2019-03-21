@@ -6,7 +6,10 @@ set_start_bindings() {
     tmux set-option -g prefix "\`"
     tmux bind-key -T prefix "\`" send-prefix
 
-    tmux set-option -g default-shell /usr/local/bin/fish
+    local fish_path=$(command -v fish)
+    if [ -n "$fish_path" ]; then
+        tmux set-option -g default-shell $fish_path
+    fi
 
     tmux bind-key -T prefix '*' set -w synchronize-pane
 
