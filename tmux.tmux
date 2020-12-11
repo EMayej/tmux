@@ -73,8 +73,8 @@ pane_move_bindings() {
     tmux bind-key -T T-Window-Manipulate L resize-pane -R 5 '\;' switch -T T-Window-Manipulate
     tmux bind-key -T T-Window-Manipulate r rotate-window -D '\;' switch -T T-Window-Manipulate
     tmux bind-key -T T-Window-Manipulate R rotate-window -U '\;' switch -T T-Window-Manipulate
-    tmux bind-key -T T-Window-Manipulate '<' swap-window -t '-1' '\;' switch -T T-Window-Manipulate
-    tmux bind-key -T T-Window-Manipulate '>' swap-window -t '+1' '\;' switch -T T-Window-Manipulate
+    tmux bind-key -T T-Window-Manipulate '<' swap-window -t '-1' '\;' select-window -t '-1' '\;' switch -T T-Window-Manipulate
+    tmux bind-key -T T-Window-Manipulate '>' swap-window -t '+1' '\;' select-window -t '+1' '\;' switch -T T-Window-Manipulate
     tmux bind-key -T T-Window-Manipulate d kill-pane '\;' switch -T T-Window-Manipulate
     tmux bind-key -T T-Window-Manipulate D kill-pane -a '\;' switch -T T-Window-Manipulate
     tmux bind-key -T T-Window-Manipulate c new-window -c "#{pane_current_path}" -n "" '\;' switch -T T-Window-Manipulate
