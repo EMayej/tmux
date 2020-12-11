@@ -80,8 +80,8 @@ pane_control() {
     tmux bind-key -T T-Windows H resize-pane -L 5 '\;' switch -T T-Windows
     tmux bind-key -T T-Windows L resize-pane -R 5 '\;' switch -T T-Windows
 
-    tmux bind-key -T T-Windows d kill-pane '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows D kill-pane -a '\;' switch -T T-Windows
+    tmux bind-key -T T-Windows d kill-pane
+    tmux bind-key -T T-Windows D kill-pane -a
 
     tmux bind-key -T T-Windows m resize-pane -Z
 }
