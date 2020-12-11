@@ -2,30 +2,6 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-set_start_bindings() {
-    tmux set-option -g prefix "\`"
-    tmux bind-key -T prefix "\`" send-prefix
-
-    tmux bind-key -T prefix '*' set -w synchronize-pane
-
-    tmux bind-key -T prefix Tab last-window
-    tmux bind-key -T prefix c new-window -c "#{pane_current_path}" -n ""
-    # Break and merge windows and panes
-    # ^ pulls a window into a horizontal pane
-    # < pulls a window into a vertical pane
-    # > breaks it back out into its own window
-    tmux bind-key '^' split-window -v '\;' choose-tree -w 'kill-pane; join-pane -vs %%'
-    tmux bind-key '<' split-window -h '\;' choose-tree -w 'kill-pane; join-pane -hs %%'
-    tmux bind-key '>' break-pane -d
-}
-
-set_copy_mode_vi() {
-    tmux set-option -w -g mode-keys vi
-    tmux bind-key -T prefix Escape copy-mode
-    tmux bind-key -T copy-mode-vi v send -X begin-selection
-    tmux bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel pbcopy
-}
-
 theme_agnoster() {
     # http://www.fileformat.info/info/unicode/char/e0b0/fontsupport.htm
 
@@ -38,19 +14,6 @@ theme_agnoster() {
     # SYMBOL_RIGHT_ARROW_THIN="\uE0B1"
     # SYMBOL_LEFT_ARROW_BOLD="\uE0B2"
     # SYMBOL_LEFT_ARROW_THIN="\uE0B3"
-
-    tmux set-option -g base-index 1
-    tmux set-option -g pane-base-index 1
-
-    tmux set-option -g default-terminal xterm-256color
-    tmux set-option -g -w xterm-keys no
-    tmux set-option -g -w automatic-rename on
-
-    tmux set-option -g allow-rename on
-    tmux set-option -g renumber-windows off
-    tmux set-option -g monitor-activity off
-
-    tmux set-option -g display-panes-time 2000
 
     tmux set-option -g set-titles on
     tmux -u set-option -g set-titles-string "#S $SYMBOL_HEART #I #W"
@@ -131,15 +94,7 @@ pane_resize_bindings() {
     tmux bind-key -T T-Window-Manipulate '}' resize-pane -D '\;' switch -T T-Window-Manipulate
 }
 
-my_settings() {
-    tmux set-option -g allow-rename off
-    tmux set-option -g default-terminal "xterm-256color"
-}
-
 main() {
-    set_start_bindings
-    set_copy_mode_vi
-
     theme_agnoster
 
     pane_root_bindings
@@ -147,7 +102,5 @@ main() {
     pane_move_bindings
     pane_split_bindings
     pane_resize_bindings
-
-    my_settings
 }
 main
