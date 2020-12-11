@@ -36,7 +36,9 @@ pane_root_bindings() {
 
     tmux bind-key -T T-Windows . switch -T T-Window-Manipulate # Window Manipulation Transient State
     tmux bind-key -T T-Windows / split-window -h -c "#{pane_current_path}"
+    tmux bind-key -T T-Windows v split-window -h -c "#{pane_current_path}"
     tmux bind-key -T T-Windows - split-window -c "#{pane_current_path}"
+    tmux bind-key -T T-Windows s split-window -c "#{pane_current_path}"
     tmux bind-key -T T-Windows j select-pane -D
     tmux bind-key -T T-Windows k select-pane -U
     tmux bind-key -T T-Windows h select-pane -L
