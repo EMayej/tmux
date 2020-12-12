@@ -31,66 +31,8 @@ theme_agnoster() {
     tmux set-option -g status-right-length 150
 }
 
-pane_control() {
-    tmux bind-key -T prefix w switch -T T-Windows
-
-    tmux bind-key -T T-Windows w choose-tree -wZ
-
-    # window
-    tmux bind-key -T T-Windows p select-window -t '-1' '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows n select-window -t '+1' '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows 1 select-window -t :=1 '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows 2 select-window -t :=2 '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows 3 select-window -t :=3 '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows 4 select-window -t :=4 '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows 5 select-window -t :=5 '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows 6 select-window -t :=6 '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows 7 select-window -t :=7 '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows 8 select-window -t :=8 '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows 9 select-window -t :=9 '\;' switch -T T-Windows
-
-    tmux bind-key -T T-Windows c new-window -c "#{pane_current_path}" -n ""
-
-    tmux bind-key -T T-Windows '<' swap-window -t '-1' '\;' select-window -t '-1' '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows '>' swap-window -t '+1' '\;' select-window -t '+1' '\;' switch -T T-Windows
-
-    tmux bind-key -T T-Windows - split-window -v -d -c "#{pane_current_path}"
-    tmux bind-key -T T-Windows s split-window -v -d -c "#{pane_current_path}"
-    tmux bind-key -T T-Windows S split-window -v -c "#{pane_current_path}"
-
-    tmux bind-key -T T-Windows / split-window -h -d -c "#{pane_current_path}"
-    tmux bind-key -T T-Windows v split-window -h -d -c "#{pane_current_path}"
-    tmux bind-key -T T-Windows V split-window -h -c "#{pane_current_path}"
-
-    tmux bind-key -T T-Windows r rotate-window -D '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows R rotate-window -U '\;' switch -T T-Windows
-
-    # pane
-    tmux bind-key -T T-Windows j select-pane -D '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows k select-pane -U '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows h select-pane -L '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows l select-pane -R '\;' switch -T T-Windows
-
-    tmux bind-key -T T-Windows '[' resize-pane -L '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows ']' resize-pane -R '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows '{' resize-pane -U '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows '}' resize-pane -D '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows J resize-pane -D 5 '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows K resize-pane -U 5 '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows H resize-pane -L 5 '\;' switch -T T-Windows
-    tmux bind-key -T T-Windows L resize-pane -R 5 '\;' switch -T T-Windows
-
-    tmux bind-key -T T-Windows d kill-pane
-    tmux bind-key -T T-Windows D kill-pane -a
-
-    tmux bind-key -T T-Windows m resize-pane -Z
-}
-
-
 main() {
     theme_agnoster
-
-    pane_control
 }
 
 main
